@@ -1,4 +1,4 @@
-package com.imagePro;
+//package com.imagePro;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

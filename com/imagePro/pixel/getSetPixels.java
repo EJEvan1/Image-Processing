@@ -1,4 +1,4 @@
-package com.imagePro.pixel;
+//package com.imagePro.pixel;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
