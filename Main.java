@@ -1,6 +1,7 @@
 import com.imagePro.*;
 //import com.imagePro.pixel.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 class Main {
   public static void main(String[] args) {
     DrawImage display = new DrawImage("test.jpg");
@@ -8,40 +9,31 @@ class Main {
     Negative neg = new Negative();
     Rotate rot = new Rotate();
     Resize size = new Resize();
-    BufferedImage img = display.readImage("shore.jpg");
+    BufferedImage img = display.readImage("oldman.jpg");
     BufferedImage img2 = display.readImage("test.jpg");
-    getSetPixels landscapeImg = new getSetPixels(img);
+    img = size.resize(img, 300, 250);
+    img2 = size.resize(img2, 300, 250);
+    getSetPixels shoreImg = new getSetPixels(img);
+    getSetPixels testImg = new getSetPixels(img2);
     rawData raw = new rawData();
-
-    display.draw(size.resize(img, 0.05));
-    //read out data 
-    int red = 0;
-    int green = 0;
-    int blue = 0;
-    for (int i = 0; i < landscapeImg.storedWidth(); i++){
-      for (int j = 0; j < landscapeImg.storedHeight(); j++){
-        int[] RGB = landscapeImg.getRGBData(i, j);
-      //  System.out.println("Pixel at " + i + ", " + j);
-       // System.out.println("Alpha: " + RGB[0]);
-        //System.out.println("Red: " + RGB[1]);
-        red += RGB[1];
-        //System.out.println("Green: " + RGB[2]);
-        green += RGB[2];
-        //System.out.println("Blue: "  + RGB[3]);
-        blue += RGB[3];
+    Random r = new Random();
+    
+    //  testImg = new getSetPixels(img2);
+      //shoreImg = new getSetPixels(img);
+    for (int i = 0; i < 300; i++){
+      for (int j = 0; j < 250; j++ ){
+        if (r.nextBoolean()){
+          int[] newData = shoreImg.getRGBData(i, j);
+         testImg.setRGBData(newData, i, j);
+        }
       }
-      //System.out.println("\n");
     }
-   red = (int) red / (landscapeImg.storedWidth() * landscapeImg.storedHeight());
-    System.out.println("Red: " + red);
-   green = (int) green / (landscapeImg.storedWidth() * landscapeImg.storedHeight());
-    System.out.println("Green: " + green);
-    blue = (int) blue / (landscapeImg.storedWidth() * landscapeImg.storedHeight());
-    System.out.println("Blue: " + blue);
-  // int[][] data = raw.getRawData(landscapeImg);
-  img = size.resize(img, 192, 108);
-//    img2 = size.resize(, 192, 108);
-    Comparison co = new Comparison(img, rand.create());
-    System.out.println("Difference: " + co.compare() + "%");
+    //display.draw(testImg.getImage());
+    display.draw(testImg.getImage());
+    try{Thread.sleep(500);}
+    catch(Exception e){}
+  //  display.hideImage();
+      Comparison test = new Comparison(testImg.getImage(), shoreImg.getImage());
+    System.out.println("Difference: " + test.compare() + "%");
   }
 }

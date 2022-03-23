@@ -31,10 +31,17 @@ public class getSetPixels{
 
     return RGB;
   }
+  public void setRGBData(int[] RGB, int x, int y){
+    int p = (RGB[0] << 24) | (RGB[1] << 16) | (RGB[2] << 8) | RGB[3]; 
+    img.setRGB(x, y, p);
+  }
   public int storedWidth(){
     return width;
   }
   public int storedHeight(){
     return height;
+  }
+  public BufferedImage getImage(){
+    return img;
   }
 }
