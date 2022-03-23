@@ -8,7 +8,7 @@ class Main {
     Negative neg = new Negative();
     Rotate rot = new Rotate();
     Resize size = new Resize();
-    BufferedImage img = display.readImage("landscap.jpg");
+    BufferedImage img = display.readImage("test.jpg");
     getSetPixels landscapeImg = new getSetPixels(img);
 
     display.draw(size.resize(img, 0.05));

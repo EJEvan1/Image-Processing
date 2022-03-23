@@ -1,3 +1,5 @@
+package com.imagePro.data;
+
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
