@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-class Resize {
+public class Resize {
 
   public BufferedImage resize(BufferedImage img, int scaledWidth, int scaledHeight) {
     BufferedImage outImg = new BufferedImage(scaledWidth, scaledHeight, img.getType());
